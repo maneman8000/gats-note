@@ -1,14 +1,15 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "esnext",
-        "jsx": "react",
-        "lib": ["dom", "es2015", "es2017"]
-    },
-    "include": [
-        "./src/**/*"
-    ]
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "target": "es2015",
+    "jsx": "react",
+    "jsxFactory": "createElement",
+    "strict": true,
+    "module": "esnext",
+    "lib": ["dom", "es2015", "esnext"],
+    "typeRoots": ["./node_modules/@types", "./types"],
+  },
+  "include": ["./src/**/*"]
 }

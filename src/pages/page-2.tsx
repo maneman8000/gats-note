@@ -1,12 +1,12 @@
-import * as React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Layout from '../layouts/Layout';
+import Link from 'gatsby-link';
 
-const SecondPage = () => (
-  <div>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+const SecondPage: React.FC<React.ClassAttributes<HTMLElement> & Props> = ({ data }) => (
+  <Layout>
+    <h1>second page</h1>
     <Link to="/">Go back to the homepage</Link>
-  </div>
-)
+  </Layout>
+);
 
-export default SecondPage
+export default SecondPage;
