@@ -21,7 +21,7 @@ const Home: React.FC<React.ClassAttributes<HTMLElement> & Props> = ({ data }) =>
       Welcome to your new <strong>{data.site.siteMetadata.title}</strong> site.
     </p>
     <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Link to="/grid/">Go to Grid example</Link>
   </Layout>
 );
 
