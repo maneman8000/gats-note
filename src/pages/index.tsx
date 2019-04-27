@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { FC, ClassAttributes, useContext } from 'react';
+import { context as ThemeContext } from '../context/theme';
 import Layout from '../layouts/Layout';
 import Link from 'gatsby-link';
 
@@ -14,16 +15,21 @@ interface Props {
   };
 }
 
-const Home: React.FC<React.ClassAttributes<HTMLElement> & Props> = ({ data }) => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>
-      Welcome to your new <strong>{data.site.siteMetadata.title}</strong> site.
-    </p>
-    <p>Now go build something great.</p>
-    <Link to="/grid/">Go to Grid example</Link>
-  </Layout>
-);
+const Home: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
+  const theme = useContext(ThemeContext);
+  console.log('from index ', ThemeContext, theme);
+
+  return (
+    <Layout>
+      <h1>Hi people</h1>
+      <p>
+        Welcome to your new <strong>{data.site.siteMetadata.title}</strong> site.
+      </p>
+      <p>Now go build something great.</p>
+      <Link to="/grid/">Go to Grid example</Link>
+    </Layout>
+  );
+};
 
 export default Home;
 

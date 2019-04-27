@@ -1,5 +1,6 @@
-import React from 'react';
-import { Provider as ThemeProvider } from '../context/theme';
+import React, { FC, ClassAttributes } from 'react';
+import { Provider as ThemeProvider, theme } from '../context/theme';
+import Header from '../components/Header';
 import '../styles/global.scss';
 
 interface LayoutProps {
@@ -9,9 +10,10 @@ interface LayoutProps {
   children: ReactElement<HTMLElement>[];
 }
 
-const Layout: React.FC<React.ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (
-  <ThemeProvider>
-    <div>{children}</div>
+const Layout: FC<ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (
+  <ThemeProvider value={theme}>
+    <Header />
+    {children}
   </ThemeProvider>
 );
 
