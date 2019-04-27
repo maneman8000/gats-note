@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider as ThemeProvider } from '../context/theme';
 import '../styles/global.scss';
 
 interface LayoutProps {
@@ -9,7 +10,9 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<React.ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (
-  <div>{children}</div>
+  <ThemeProvider>
+    <div>{children}</div>
+  </ThemeProvider>
 );
 
 export default Layout;
