@@ -11,6 +11,10 @@ module.exports = {
       options: {
         includePaths: [`${__dirname}/node_modules/`],
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/admin/*`] },
+    },
   ],
 }
