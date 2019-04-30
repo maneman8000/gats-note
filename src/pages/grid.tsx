@@ -1,5 +1,5 @@
-import React, { FC, ClassAttributes, useContext } from 'react';
-import { context as ThemeContext } from '../context/theme';
+import React, { FC, ClassAttributes, createElement, useContext } from 'react';
+import { context as StateContext } from '../context/state';
 import _Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import styled from '@emotion/styled';
@@ -10,7 +10,7 @@ const Root = styled('div')({
 });
 
 const GridPage: FC<ClassAttributes<HTMLElement>> = () => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(StateContext).state.theme;
   const Paper = styled(_Paper)({
     padding: theme.spacing.unit * 2,
     textAlign: 'center',

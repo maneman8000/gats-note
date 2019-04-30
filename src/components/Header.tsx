@@ -1,5 +1,5 @@
 import React, { FC, ClassAttributes, useContext } from 'react';
-import { context as ThemeContext } from '../context/theme';
+import { context as StateContext } from '../context/state';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/ToolBar';
 import _Typography from '@material-ui/core/Typography';
@@ -22,7 +22,7 @@ const IconButton = styled(_IconButton)({
 });
 
 const Header: FC<ClassAttributes<HTMLElement>> = () => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(StateContext).state.theme;
   const Margin = styled('div')(theme.mixins.toolbar);
   return (
     <Root>
