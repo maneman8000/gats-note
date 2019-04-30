@@ -9,11 +9,9 @@ const Home = () => <p>Home</p>;
 const Settings = () => <p>Settings</p>;
 const Billing = () => <p>Billing</p>;
 
-const Admin: FC<ClassAttributes<HTMLElement>> = () => {
+const Admin: FC<ClassAttributes<HTMLElement>> = ({ location }) => {
   const user = netflifyIdentity.currentUser();
-  console.log('user: ', user);
-  console.log('location', location.pathname);
-  if (location.pathname !== '/admin/login' && !user) {
+  if (location.pathname !== '/admin/login' && !user && typeof window !== `undefined`) {
     navigate('/admin/login');
     return <div>Please Login...</div>;
   }
