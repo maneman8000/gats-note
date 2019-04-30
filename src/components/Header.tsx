@@ -1,7 +1,7 @@
 import React, { FC, ClassAttributes, useContext } from 'react';
 import { context as StateContext } from '../context/state';
 import AppBar from '@material-ui/core/AppBar';
-import ToolBar from '@material-ui/core/ToolBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import _Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import _IconButton from '@material-ui/core/IconButton';
@@ -27,7 +27,7 @@ const Header: FC<ClassAttributes<HTMLElement>> = () => {
   return (
     <Root>
       <AppBar position="fixed">
-        <ToolBar>
+        <Toolbar>
           <IconButton color="inherit" arial-label="Menu">
             <MenuIcon />
           </IconButton>
@@ -35,7 +35,7 @@ const Header: FC<ClassAttributes<HTMLElement>> = () => {
             Title
           </Typography>
           <Button color="inherit">Login</Button>
-        </ToolBar>
+        </Toolbar>
       </AppBar>
       <Margin />
     </Root>
