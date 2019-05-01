@@ -16,9 +16,6 @@ interface LayoutProps {
 const Layout: FC<ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (
   <StateProvider>
     <ThemeProvider>
-      <Helmet>
-        <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-      </Helmet>
       <CssBaseline />
       <Header />
       {children}
