@@ -26,7 +26,7 @@ const Header: FC<ClassAttributes<HTMLElement>> = () => {
   const Margin = styled('div')(theme.mixins.toolbar);
   return (
     <Root>
-      <AppBar position="fixed">
+      <AppBar position="static" color="default" elevation={0}>
         <Toolbar>
           <IconButton color="inherit" arial-label="Menu">
             <MenuIcon />
