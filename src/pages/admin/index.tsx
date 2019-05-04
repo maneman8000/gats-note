@@ -11,7 +11,7 @@ const Settings = () => <p>Settings</p>;
 const Billing = () => <p>Billing</p>;
 
 const Admin: FC<ClassAttributes<HTMLElement>> = ({ location }) => {
-  const identity = useIdentity();
+  const identity = typeof window === 'undefined' ? null : useIdentity();
   const name =
     (identity && identity.user && identity.user.user_metadata && identity.user.user_metadata.name) || 'NoName';
   useEffect(() => {
