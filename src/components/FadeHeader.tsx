@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, useContext, useEffect, useState } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, useContext, useEffect, useState, memo } from 'react';
 import { context as StateContext } from '../context/state';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -24,15 +25,17 @@ const IconButton = styled(_IconButton)({
 
 const Header: FC<ClassAttributes<HTMLElement>> = () => {
   const theme = useContext(StateContext).state.theme;
-  const Margin = styled('div')(theme.mixins.toolbar);
+  const Margin = styled('div')(theme.mixins ? theme.mixins.toolbar : 8);
 
   const [state, setState] = useState({ scrolling: false, scrollTop: 0 });
   useEffect(() => {
     const onScroll = (e: Event) => {
-      setState({
-        scrollTop: e.target.documentElement.scrollTop,
-        scrolling: e.target.documentElement.scrollTop > state.scrollTop,
-      });
+      if (e.target) {
+        setState({
+          scrollTop: e.target.documentElement.scrollTop,
+          scrolling: e.target.documentElement.scrollTop > state.scrollTop,
+        });
+      }
     };
     window.addEventListener('scroll', onScroll);
     return () => {
@@ -60,4 +63,4 @@ const Header: FC<ClassAttributes<HTMLElement>> = () => {
 };
 
 // TODO: really memorized?
-export default React.memo(Header, (prevProp, nextProp) => prevProp.scrolling === nextProp.scrolling);
+export default memo(Header, (prevProp, nextProp) => prevProp.scrolling === nextProp.scrolling);

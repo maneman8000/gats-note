@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, Consumer as C, createContext, useReducer, Dispatch } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, Consumer as C, createContext, useReducer, Dispatch } from 'react';
 import { reducer, Action } from '../reducer';
 import { Theme, initTheme, themeInitialState } from '../entity/Theme';
 import { User } from 'react-netlify-identity';

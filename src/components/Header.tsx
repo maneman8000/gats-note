@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, useContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, useContext } from 'react';
 import { context as StateContext } from '../context/state';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';

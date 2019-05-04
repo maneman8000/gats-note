@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, useContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, useContext } from 'react';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { context as StateContext } from '../context/state';
 

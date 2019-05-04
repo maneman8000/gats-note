@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, useContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, useContext } from 'react';
 import { context as StateContext } from '../context/state';
 import _Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';

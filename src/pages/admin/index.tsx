@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, useEffect, useContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, useEffect, useContext } from 'react';
 import { Router } from '@reach/router';
 import netflifyIdentity from 'netlify-identity-widget';
 import { Link } from 'gatsby';

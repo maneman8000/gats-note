@@ -1,15 +1,24 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
     "target": "es2015",
-    "jsx": "react",
-    "jsxFactory": "createElement",
-    "strict": true,
     "module": "esnext",
     "lib": ["dom", "es2015", "esnext"],
+    "allowJs": true,
+    "jsx": "react",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
     "typeRoots": ["./node_modules/@types", "./types"],
+    "sourceMap": true,
+    "noEmit": true
   },
-  "include": ["./src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "public/**"]
 }

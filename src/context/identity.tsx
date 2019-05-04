@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, Consumer as C, createContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes, Consumer as C, createContext } from 'react';
 import { useNetlifyIdentity, User, Settings } from 'react-netlify-identity';
 
 interface Context {

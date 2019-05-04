@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes } from 'react';
 import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';

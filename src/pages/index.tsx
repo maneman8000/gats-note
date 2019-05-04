@@ -1,4 +1,5 @@
-import React, { FC, ClassAttributes, createElement, useContext } from 'react';
+import * as React from 'react';
+import { FC, ClassAttributes } from 'react';
 import Layout from '../layouts/Layout';
 import Link from 'gatsby-link';
 
