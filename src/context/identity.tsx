@@ -29,7 +29,7 @@ interface Context {
   settings: () => Promise<Settings>;
 }
 
-export const useIdentity = () => useNetlifyIdentity('');
+export const useIdentity = () => useNetlifyIdentity('http://example.com/');
 
 export const context = createContext<Context>();
 export const Provider: FC<ClassAttributes<HTMLElement>> = ({ children }) => (
