@@ -1,7 +1,5 @@
 import React, { FC, ClassAttributes, createElement } from 'react';
 import { Helmet } from 'react-helmet';
-import ThemeProvider from './ThemeProvider';
-import { Provider as StateProvider } from '../context/state';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';
 import '../styles/global.scss';
@@ -14,16 +12,15 @@ interface LayoutProps {
 }
 
 const Layout: FC<ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (
-  <StateProvider>
-    <ThemeProvider>
-      <Helmet>
-        <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-      </Helmet>
-      <CssBaseline />
-      <Header />
-      {children}
-    </ThemeProvider>
-  </StateProvider>
+  <div>
+    <Helmet>
+      <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
+    </Helmet>
+    <CssBaseline />
+    <Header />
+    <div id="netlify-modal" />
+    {children}
+  </div>
 );
 
 export default Layout;

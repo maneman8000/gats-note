@@ -1,9 +1,9 @@
 import { State } from './context/state';
-import Theme, { initTheme } from './entity/Theme';
+import { initTheme } from './entity/Theme';
 
 export type Action = {
   type: string;
-  payload?: Theme;
+  payload?: any;
 };
 
 export const reducer = (state: State, action: Action) => {
@@ -12,6 +12,11 @@ export const reducer = (state: State, action: Action) => {
       return {
         ...state,
         theme: initTheme({ palette: action.payload }),
+      };
+    case 'ADMIN_LOGIN':
+      return {
+        ...state,
+        adminUser: action.payload,
       };
     default:
       return state;
