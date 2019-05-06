@@ -16,12 +16,12 @@ const Root = styled('div')({
 
 const Typography = styled(_Typography)({
   flex: 1,
-});
+}) as typeof _Typography;
 
 const IconButton = styled(_IconButton)({
   marginLeft: -12,
   marginRight: 20,
-});
+}) as typeof _IconButton;
 
 const Header: FC<ClassAttributes<HTMLElement>> = () => {
   const theme = useContext(StateContext).state.theme;

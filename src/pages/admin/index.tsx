@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { FC, ClassAttributes, useEffect, useContext } from 'react';
 import { Router } from '@reach/router';
-import netflifyIdentity from 'netlify-identity-widget';
-import { Link } from 'gatsby';
+import * as netlifyIdentity from 'netlify-identity-widget';
+import { Link, PageRendererProps } from 'gatsby';
 import Layout from '../../layouts/Layout';
 import ThemeEditor from './ThemeEditor';
 import { Provider as IdentityProvider, useIdentity } from '../../context/identity';
@@ -12,26 +12,26 @@ const Home = () => <p>Home</p>;
 const Settings = () => <p>Settings</p>;
 const Billing = () => <p>Billing</p>;
 
-const Admin: FC<ClassAttributes<HTMLElement>> = ({ location }) => {
+const Admin: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ location }) => {
   const identity = typeof window === 'undefined' ? null : useIdentity();
   const { state, dispatch } = useContext(StateContext);
   const isLoggedIn = (identity && identity.isLoggedIn) || !!state.adminUser;
 
   useEffect(() => {
-    netflifyIdentity.init({
+    netlifyIdentity.init({
       container: '#netlify-modal', // defaults to document.body,
     });
-    if (!netflifyIdentity.currentUser()) {
-      netflifyIdentity.on('login', user => {
+    if (!netlifyIdentity.currentUser()) {
+      netlifyIdentity.on('login', user => {
         netlifyIdentity.close();
-        dispatch({ type: 'ADMIN_LOGIN', payload: netflifyIdentity.currentUser() });
+        dispatch({ type: 'ADMIN_LOGIN', payload: netlifyIdentity.currentUser() });
       });
-      netflifyIdentity.open();
+      netlifyIdentity.open();
     }
   });
 
   return (
-    <Layout>
+    <Layout location={location}>
       <IdentityProvider value={identity}>
         {isLoggedIn ? (
           <div>

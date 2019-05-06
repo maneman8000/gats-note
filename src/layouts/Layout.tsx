@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, ClassAttributes } from 'react';
+import { FC, ClassAttributes, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';
@@ -9,7 +9,7 @@ interface LayoutProps {
   location: {
     pathname: string;
   };
-  children: ReactElement<HTMLElement>[];
+  children: ReactElement<HTMLElement>[] | ReactElement<HTMLElement>;
 }
 
 const Layout: FC<ClassAttributes<HTMLElement> & LayoutProps> = ({ location, children }) => (

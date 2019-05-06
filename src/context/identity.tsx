@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { FC, ClassAttributes, Consumer as C, createContext } from 'react';
+import { FC, ClassAttributes, createContext } from 'react';
+import GoTrue from 'gotrue-js';
 import { useNetlifyIdentity, User, Settings } from 'react-netlify-identity';
 
 interface Context {
@@ -30,10 +31,9 @@ interface Context {
   settings: () => Promise<Settings>;
 }
 
-export const useIdentity = () => useNetlifyIdentity('http://example.com/');
+export const useIdentity = () => useNetlifyIdentity('http://example.com');
 
-export const context = createContext<Context>();
-export const Provider: FC<ClassAttributes<HTMLElement>> = ({ children }) => (
-  <context.Provider>{children}</context.Provider>
-);
-export const Consumer = context.Consumer as C<Context>;
+export const Provider: FC<ClassAttributes<HTMLElement>> = ({ children }) => {
+  const context = createContext<Context>(useIdentity());
+  return <context.Provider value={useIdentity()}>{children}</context.Provider>;
+};
