@@ -18,7 +18,7 @@ interface Props {
 
 const Home: FC<ClassAttributes<HTMLElement> & Props & PageRendererProps> = ({ data, location }) => {
   return (
-    <Layout location={location}>
+    <Layout location={location} title={data.site.siteMetadata.title}>
       <h1>Hi people</h1>
       <p>
         Welcome to your new <strong>{data.site.siteMetadata.title}</strong> site.

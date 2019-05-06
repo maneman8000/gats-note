@@ -20,7 +20,7 @@ const GridPage: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ locati
   }) as typeof _Paper;
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title={`Grid`}>
       <Root>
         <Grid container spacing={40}>
           <Grid item xs={12} sm={6} md={3}>

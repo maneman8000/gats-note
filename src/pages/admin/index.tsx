@@ -31,7 +31,7 @@ const Admin: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ location 
   });
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title={'Admin'}>
       <IdentityProvider value={identity}>
         {isLoggedIn ? (
           <div>
