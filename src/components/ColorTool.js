@@ -96,6 +96,20 @@ class ColorTool extends React.Component {
     }
   };
 
+  handleClickColorBar = (name, color) => () => {
+    const isRgb = string => /#?([0-9a-f]{6})/i.test(string);
+
+    this.setState({
+      [`${name}Input`]: color,
+    });
+
+    if (isRgb(color)) {
+      this.setState({
+        [name]: color,
+      });
+    }
+  };
+
   handleChangeHue = name => event => {
     const {
       target: { value: hue },
@@ -127,7 +141,7 @@ class ColorTool extends React.Component {
       primary: { main: this.state.primary },
       secondary: { main: this.state.secondary },
     };
-    this.context.dispatch({ type: "THEME_CHANGE", payload: paletteColors });
+    this.context.dispatch({ type: 'THEME_CHANGE', payload: paletteColors });
   };
 
   handleResetDocsColors = () => {
@@ -135,7 +149,7 @@ class ColorTool extends React.Component {
       primary: themeInitialState.palette.primary,
       secondary: themeInitialState.palette.secondary,
     };
-    this.context.dispatch({ type: "THEME_CHANGE", payload: paletteColors });
+    this.context.dispatch({ type: 'THEME_CHANGE', payload: paletteColors });
   };
 
   render() {
@@ -143,24 +157,22 @@ class ColorTool extends React.Component {
     const { primaryShade, secondaryShade } = this.state;
     const theme = this.context.state.theme;
 
-    const colorBar = color => {
+    const colorBar = (color, intent) => {
       const background = theme.palette.augmentColor({ main: color });
 
       return (
         <Grid container className={classes.colorBar}>
           {['dark', 'main', 'light'].map(key => (
-            <div
+            <Button
+              onClick={this.handleClickColorBar(intent, rgbToHex(background[key]))}
               className={classes.colorSquare}
               style={{ backgroundColor: background[key] }}
               key={key}
             >
-              <Typography
-                variant="caption"
-                style={{ color: theme.palette.getContrastText(background[key]) }}
-              >
+              <Typography variant="caption" style={{ color: theme.palette.getContrastText(background[key]) }}>
                 {rgbToHex(background[key])}
               </Typography>
-            </div>
+            </Button>
           ))}
         </Grid>
       );
@@ -224,7 +236,7 @@ class ColorTool extends React.Component {
               );
             })}
           </div>
-          {colorBar(color)}
+          {colorBar(color, intent)}
         </Grid>
       );
     };
@@ -234,18 +246,13 @@ class ColorTool extends React.Component {
         {colorPicker('primary')}
         {colorPicker('secondary')}
         {/*<Grid item xs={12} sm={6} md={4}>*/}
-          {/*<ColorDemo data={this.state} />*/}
+        {/*<ColorDemo data={this.state} />*/}
         {/*</Grid>*/}
         <Grid item xs={12}>
           <Button variant="contained" color="primary" onClick={this.handleChangeDocsColors}>
             Set Docs Colors
           </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={this.handleResetDocsColors}
-            className={classes.button}
-          >
+          <Button variant="outlined" color="primary" onClick={this.handleResetDocsColors} className={classes.button}>
             Reset Docs Colors
           </Button>
         </Grid>

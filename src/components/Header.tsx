@@ -32,7 +32,7 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ title }) => {
   const [drawer, setDrawer] = useState(false);
   return (
     <Root>
-      <AppBar position="static" color="default" elevation={0}>
+      <AppBar position="static" color="primary" elevation={0}>
         <Toolbar>
           <IconButton color="inherit" arial-label="Menu" onClick={() => setDrawer(!drawer)}>
             <MenuIcon />

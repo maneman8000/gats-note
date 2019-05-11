@@ -5,17 +5,27 @@ export type Theme = MuiTheme;
 
 export const initTheme = createMuiTheme;
 
-import indigo from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
-import { darken } from '@material-ui/core/styles/colorManipulator';
+import brown from '@material-ui/core/colors/brown';
+import deepOrange from '@material-ui/core/colors/deepOrange';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import { darken, lighten } from '@material-ui/core/styles/colorManipulator';
+
+const primary = brown[200];
+const secondary = deepOrange[200];
 
 export const themeInitialState = {
   palette: {
     primary: {
-      main: indigo[300],
+      dark: darken(primary, 0.07),
+      main: primary,
+      light: lighten(primary, 0.07),
+      contrastText: blueGrey[900],
     },
     secondary: {
-      main: darken(pink.A400, 0.08),
+      dark: darken(secondary, 0.07),
+      main: secondary,
+      light: lighten(secondary, 0.07),
+      contrastText: blueGrey[900],
     },
   },
 };
