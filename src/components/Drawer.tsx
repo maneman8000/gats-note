@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FC, ClassAttributes } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -17,6 +18,18 @@ const Root = styled('div')({
 });
 
 const MyDrawer: FC<ClassAttributes<HTMLElement> & Props> = ({ open, onClose }) => {
+  const data = useStaticQuery(graphql`
+    query DrawerQuery {
+      site {
+        siteMetadata {
+          navigations {
+            name
+            path
+          }
+        }
+      }
+    }
+  `);
   const onClick = (to: string) => {
     return () => {
       onClose();
@@ -27,12 +40,11 @@ const MyDrawer: FC<ClassAttributes<HTMLElement> & Props> = ({ open, onClose }) =
     <Drawer variant={'temporary'} open={open} onClick={() => onClose()}>
       <Root>
         <List>
-          <ListItem button onClick={onClick('/')}>
-            <ListItemText>Home</ListItemText>
-          </ListItem>
-          <ListItem button onClick={onClick('/grid')}>
-            <ListItemText>Grid</ListItemText>
-          </ListItem>
+          {data.site.siteMetadata.navigations.map(nav => (
+            <ListItem button onClick={onClick(nav.path)} key={nav.path}>
+              <ListItemText>{nav.name}</ListItemText>
+            </ListItem>
+          ))}
         </List>
       </Root>
     </Drawer>

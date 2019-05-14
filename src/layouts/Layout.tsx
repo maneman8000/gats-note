@@ -19,7 +19,7 @@ const Layout: FC<ClassAttributes<HTMLElement> & Props> = ({ location, title, chi
       <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
     </Helmet>
     <CssBaseline />
-    <Header title={title} />
+    <Header title={title} pathname={location.pathname} />
     <div id="netlify-modal" />
     {children}
   </div>

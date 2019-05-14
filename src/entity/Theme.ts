@@ -6,12 +6,12 @@ export type Theme = MuiTheme;
 export const initTheme = createMuiTheme;
 
 import brown from '@material-ui/core/colors/brown';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+import blue from '@material-ui/core/colors/blue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import { darken, lighten } from '@material-ui/core/styles/colorManipulator';
 
-const primary = brown[200];
-const secondary = deepOrange[200];
+const primary = brown[50];
+const secondary = blue[700];
 
 export const themeInitialState = {
   palette: {
