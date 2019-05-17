@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';
 import '../styles/global.scss';
+import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+import '@fortawesome/fontawesome-free/scss/brands.scss';
 
 interface Props {
   location: {
@@ -19,7 +21,7 @@ const Layout: FC<ClassAttributes<HTMLElement> & Props> = ({ location, title, chi
       <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
     </Helmet>
     <CssBaseline />
-    <Header title={title} pathname={location.pathname} />
+    <Header pathname={location.pathname} />
     <div id="netlify-modal" />
     {children}
   </div>

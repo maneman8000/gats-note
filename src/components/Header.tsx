@@ -1,20 +1,14 @@
 import * as React from 'react';
 import { FC, ClassAttributes, ChangeEvent, useState, useContext } from 'react';
 import { context as StateContext } from '../context/state';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Toolbar from '@material-ui/core/Toolbar';
-import _Typography from '@material-ui/core/Typography';
-import _IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { AppBar, Toolbar, Tabs, Tab, Hidden, IconButton, Icon } from '@material-ui/core';
+import styled from '@emotion/styled';
+import { Menu, Mail } from '@material-ui/icons';
 import { useStaticQuery, graphql } from 'gatsby';
 import { navigate } from 'gatsby-link';
-import styled from '@emotion/styled';
 import Drawer from './Drawer';
 
 interface Props {
-  title: string;
   pathname: string;
 }
 
@@ -22,16 +16,20 @@ const Root = styled('div')({
   flexGrow: 1,
 });
 
-const Typography = styled(_Typography)({
+const Left = styled('div')({
   flex: 1,
-}) as typeof _Typography;
+});
 
-const IconButton = styled(_IconButton)({
+const MenuIconButton = styled(IconButton)({
   marginLeft: -12,
   marginRight: 20,
-}) as typeof _IconButton;
+}) as typeof IconButton;
 
-const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ title, pathname }) => {
+const SocialIconButton = styled(IconButton)({
+  marginLeft: 4,
+}) as typeof IconButton;
+
+const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
   const theme = useContext(StateContext).state.theme;
   const Margin = styled('div')(theme.mixins.toolbar);
   const [drawer, setDrawer] = useState(false);
@@ -47,23 +45,34 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ title, pathname }) =
       }
     }
   `);
-  /*
-            <Typography variant="title" color="inherit">
-            {title}
-          </Typography>
-*/
+
   return (
     <Root>
       <AppBar position="static" color="primary" elevation={0}>
         <Toolbar>
-          <IconButton color="inherit" arial-label="Menu" onClick={() => setDrawer(!drawer)}>
-            <MenuIcon />
-          </IconButton>
-          <Tabs value={pathname} onChange={(_: ChangeEvent<{}>, v: string) => navigate(v)}>
-            {data.site.siteMetadata.navigations.map(nav => (
-              <Tab label={nav.name} value={nav.path} key={nav.path} />
-            ))}
-          </Tabs>
+          <Left>
+            <Hidden mdUp>
+              <MenuIconButton color="inherit" arial-label="Menu" onClick={() => setDrawer(!drawer)}>
+                <Menu />
+              </MenuIconButton>
+            </Hidden>
+            <Hidden smDown>
+              <Tabs value={pathname} onChange={(_: ChangeEvent<{}>, v: string) => navigate(v)}>
+                {data.site.siteMetadata.navigations.map((nav: any) => (
+                  <Tab label={nav.name} value={nav.path} key={nav.path} />
+                ))}
+              </Tabs>
+            </Hidden>
+          </Left>
+          <SocialIconButton color="inherit" arial-label="Mail">
+            <Mail />
+          </SocialIconButton>
+          <SocialIconButton color="inherit" arial-label="Facebook">
+            <Icon className="fab fa-facebook" />
+          </SocialIconButton>
+          <SocialIconButton color="inherit" arial-label="Twitter">
+            <Icon className="fab fa-twitter" />
+          </SocialIconButton>
         </Toolbar>
       </AppBar>
       <Drawer open={drawer} onClose={() => setDrawer(false)} />
