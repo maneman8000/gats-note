@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';
 import '../styles/global.scss';
-import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
-import '@fortawesome/fontawesome-free/scss/brands.scss';
 
 interface Props {
   location: {

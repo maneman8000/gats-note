@@ -7,6 +7,12 @@ import { Menu, Mail } from '@material-ui/icons';
 import { useStaticQuery, graphql } from 'gatsby';
 import { navigate } from 'gatsby-link';
 import Drawer from './Drawer';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faTwitter);
+library.add(faFacebook);
 
 interface Props {
   pathname: string;
@@ -68,10 +74,10 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
             <Mail />
           </SocialIconButton>
           <SocialIconButton color="inherit" arial-label="Facebook">
-            <Icon className="fab fa-facebook" />
+            <FontAwesomeIcon icon={{ prefix: 'fab', iconName: 'facebook' }} />
           </SocialIconButton>
           <SocialIconButton color="inherit" arial-label="Twitter">
-            <Icon className="fab fa-twitter" />
+            <FontAwesomeIcon icon={{ prefix: 'fab', iconName: 'twitter' }} />
           </SocialIconButton>
         </Toolbar>
       </AppBar>
