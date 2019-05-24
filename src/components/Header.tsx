@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC, ClassAttributes, ChangeEvent, useState, useContext } from 'react';
 import { context as StateContext } from '../context/state';
-import { AppBar, Toolbar, Tabs, Tab, Hidden, IconButton, Icon } from '@material-ui/core';
+import { AppBar, Toolbar, Tabs, Tab, Hidden, IconButton } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { Menu, Mail } from '@material-ui/icons';
 import { useStaticQuery, graphql } from 'gatsby';

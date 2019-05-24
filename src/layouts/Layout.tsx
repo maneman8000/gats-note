@@ -13,9 +13,10 @@ interface Props {
   children: ReactElement<HTMLElement>[] | ReactElement<HTMLElement>;
 }
 
-const Layout: FC<ClassAttributes<HTMLElement> & Props> = ({ location, title, children }) => (
+const Layout: FC<ClassAttributes<HTMLElement> & Props> = ({ location, children }) => (
   <div>
     <Helmet>
+      <meta name="robots" content="noindex" />
       <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
     </Helmet>
     <CssBaseline />
