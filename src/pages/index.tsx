@@ -26,7 +26,7 @@ const Home: FC<ClassAttributes<HTMLElement> & Props & PageRendererProps> = ({ da
       <p>Now go build something great.</p>
       <Link to="/grid/">Go to Grid example</Link>
       <ul>
-        {new Array(500).fill(null).map((v, i) => (
+        {new Array(500).fill(null).map((_, i) => (
           <li key={i}>{i}</li>
         ))}
       </ul>

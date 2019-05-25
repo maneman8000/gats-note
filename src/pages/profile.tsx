@@ -14,7 +14,7 @@ const Root = styled('div')({
 const GridPage: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ location }) => {
   const theme = useContext(StateContext).state.theme;
   const Paper = styled(_Paper)({
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }) as typeof _Paper;
@@ -22,7 +22,7 @@ const GridPage: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ locati
   return (
     <Layout location={location} title={`Profile`}>
       <Root>
-        <Grid container spacing={40}>
+        <Grid container spacing={10}>
           <Grid item xs={12} sm={6} md={3}>
             <Paper>xs=12, sm=6, md=3</Paper>
           </Grid>

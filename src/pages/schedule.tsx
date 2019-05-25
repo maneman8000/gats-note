@@ -1,44 +1,59 @@
 import * as React from 'react';
-import { FC, ClassAttributes, useContext } from 'react';
-import { PageRendererProps } from 'gatsby';
-import { context as StateContext } from '../context/state';
-import _Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import styled from '@emotion/styled';
+import { FC, ClassAttributes } from 'react';
+import { graphql, PageRendererProps } from 'gatsby';
+import { Container, Paper, Grid } from '@material-ui/core/';
+import EdgesContent from '../entity/EdgesContent';
+import ScheduleContent from '../entity/ScheduleContent';
 import Layout from '../layouts/Layout';
+import Schedule from '../components/Schedule';
 
-const Root = styled('div')({
-  flexGrow: 1,
-});
+interface Props {
+  data: {
+    allContentfulSchedule: EdgesContent<ScheduleContent>;
+  };
+}
 
-const Page: FC<ClassAttributes<HTMLElement> & PageRendererProps> = ({ location }) => {
-  const theme = useContext(StateContext).state.theme;
-  const Paper = styled(_Paper)({
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }) as typeof _Paper;
-
+const Page: FC<ClassAttributes<HTMLElement> & PageRendererProps & Props> = ({ location, data }) => {
   return (
     <Layout location={location} title={`Schedule`}>
-      <Root>
-        <Grid container spacing={40}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper>xs=12, sm=6, md=3</Paper>
+      <Container>
+        <Paper>
+          <Grid container>
+            {data.allContentfulSchedule.edges.map(({ node }) => (
+              <Grid item xs={12} key={node.id}>
+                <Schedule data={node} />
+              </Grid>
+            ))}
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper>xs=12, sm=6, md=3</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper>xs=12, sm=6, md=3</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Paper>xs=12, sm=6, md=3</Paper>
-          </Grid>
-        </Grid>
-      </Root>
+        </Paper>
+      </Container>
     </Layout>
   );
 };
 
 export default Page;
+
+export const pageQuery = graphql`
+  query ScheduleQuery {
+    allContentfulSchedule {
+      edges {
+        node {
+          id
+          date
+          title
+          body {
+            id
+            childMarkdownRemark {
+              html
+            }
+          }
+          image {
+            fluid(maxWidth: 480) {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`;
