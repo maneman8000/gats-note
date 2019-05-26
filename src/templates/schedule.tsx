@@ -40,8 +40,12 @@ const Page: FC<ClassAttributes<HTMLElement> & PageRendererProps & Props> = ({ lo
 export default Page;
 
 export const pageQuery = graphql`
-  query PageScheduleQuery($currentDate: Date!) {
-    allContentfulSchedule(limit: 100, sort: { fields: [date], order: ASC }, filter: { date: { gte: $currentDate } }) {
+  query TemplateScheduleQuery($dateFrom: Date!, $dateTo: Date!) {
+    allContentfulSchedule(
+      limit: 100
+      sort: { fields: [date], order: ASC }
+      filter: { date: { gte: $dateFrom, lte: $dateTo } }
+    ) {
       edges {
         node {
           id
@@ -57,7 +61,7 @@ export const pageQuery = graphql`
             file {
               url
             }
-            fluid(maxWidth: 480) {
+            fluid(maxWidth: 600) {
               src
             }
           }

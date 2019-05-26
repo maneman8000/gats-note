@@ -51,6 +51,7 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
       }
     }
   `);
+  const _pathname = pathname.replace(/(\/[^\/]*).*/, '$1');
 
   return (
     <Root>
@@ -63,7 +64,7 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
               </MenuIconButton>
             </Hidden>
             <Hidden smDown>
-              <Tabs value={pathname} onChange={(_: ChangeEvent<{}>, v: string) => navigate(v)}>
+              <Tabs value={_pathname} onChange={(_: ChangeEvent<{}>, v: string) => navigate(v)}>
                 {data.site.siteMetadata.navigations.map((nav: any) => (
                   <Tab label={nav.name} value={nav.path} key={nav.path} />
                 ))}

@@ -9,6 +9,9 @@ interface ScheduleContent {
     };
   };
   image?: {
+    file: {
+      url: string;
+    };
     fluid: {
       src: string;
     };
