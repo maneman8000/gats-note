@@ -3,6 +3,7 @@ import { FC, ClassAttributes, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../styles/global.scss';
 
 interface Props {
@@ -23,6 +24,7 @@ const Layout: FC<ClassAttributes<HTMLElement> & Props> = ({ location, children }
     <Header pathname={location.pathname} />
     <div id="netlify-modal" />
     {children}
+    <Footer />
   </div>
 );
 

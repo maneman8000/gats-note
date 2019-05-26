@@ -40,7 +40,7 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
           ''
         )}
         <Grid item>
-          <Typography>{format(new Date(data.date), 'MM/DD (dd)', { locale: jaLocale })}</Typography>
+          <Typography>{format(new Date(data.date), 'M/D (dd)', { locale: jaLocale })}</Typography>
           <Typography>{data.title}</Typography>
           {data.body ? <div dangerouslySetInnerHTML={{ __html: br(data.body.childMarkdownRemark.html) }} /> : ''}
         </Grid>
