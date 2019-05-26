@@ -1,22 +1,20 @@
-let contentfulConfig
+let contentfulConfig;
 
 try {
   // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
+  contentfulConfig = require('./.contentful');
 } catch (_) {}
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
-}
+};
 
-const { spaceId, accessToken } = contentfulConfig
+const { spaceId, accessToken } = contentfulConfig;
 
 if (!spaceId || !accessToken) {
-  throw new Error(
-    'Contentful spaceId and the delivery token need to be provided.'
-  )
+  throw new Error('Contentful spaceId and the delivery token need to be provided.');
 }
 
 module.exports = {
@@ -25,21 +23,21 @@ module.exports = {
     navigations: [
       {
         name: `Home`,
-        path: `/`
+        path: `/`,
       },
       {
         name: `Profile`,
-        path: `/profile`
+        path: `/profile`,
       },
       {
         name: `Discography`,
-        path: `/discography`
+        path: `/discography`,
       },
       {
         name: `Schedule`,
-        path: `/schedule`
-      }
-    ]
+        path: `/schedule`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -48,7 +46,7 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         includePaths: [`${__dirname}/node_modules/`],
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
@@ -70,6 +68,13 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'nofollow',
+            },
+          },
         ],
       },
     },
@@ -78,6 +83,6 @@ module.exports = {
       options: contentfulConfig,
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
   ],
-}
+};
