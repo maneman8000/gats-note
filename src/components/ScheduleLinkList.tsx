@@ -12,7 +12,7 @@ interface Props {
   location: Location;
 }
 
-const ScheduleLinkList: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
+const ScheduleLinkList: FC<ClassAttributes<HTMLElement> & Props> = ({ data, location }) => {
   const theme = useContext(StateContext).state.theme;
   const Root = styled('div')({
     margin: theme.spacing(2),
