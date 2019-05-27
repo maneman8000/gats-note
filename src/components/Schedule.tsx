@@ -20,7 +20,6 @@ const renderAst = new rehypeReact({
 
 const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
   const theme = useContext(StateContext).state.theme;
-  console.log(theme);
   const Root = styled('div')({
     margin: theme.spacing(2),
     paddingBottom: theme.spacing(2),
@@ -28,11 +27,9 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
   });
   const Img = styled('img')({
     maxWidth: `100%`,
-    margin: `${theme.spacing(1)}px 0`,
   });
   const Title = styled(Typography)({
-    margin: `${theme.spacing(1)}px 0`,
-    color: brown[400],
+    marginBottom: theme.spacing(2),
     fontWeight: 'bold',
   }) as typeof Typography;
 
@@ -68,9 +65,9 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
 
   return (
     <Root>
-      <Grid container justify="flex-start">
+      <Grid container justify="flex-start" spacing={4}>
         {data.image ? (
-          <Grid item xs={12} sm={12} md={8}>
+          <Grid item xs={12} sm={12} md={6}>
             <Link href={data.image.file.url} target="_blank" rel="noopener">
               <Img src={data.image.fluid.src} />
             </Link>
