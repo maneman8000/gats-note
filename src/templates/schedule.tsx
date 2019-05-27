@@ -55,6 +55,7 @@ export const pageQuery = graphql`
             id
             childMarkdownRemark {
               html
+              htmlAst
             }
           }
           image {

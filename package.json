@@ -33,7 +33,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-netlify-identity": "0.0.16"
+    "react-netlify-identity": "0.0.16",
+    "rehype-react": "^3.1.0"
   },
   "devDependencies": {
     "@types/netlify-identity-widget": "^1.4.1",

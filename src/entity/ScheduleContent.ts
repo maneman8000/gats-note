@@ -6,6 +6,7 @@ interface ScheduleContent {
     id: string;
     childMarkdownRemark: {
       html: string;
+      htmlAst: any;
     };
   };
   image?: {
