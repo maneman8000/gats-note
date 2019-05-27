@@ -29,11 +29,11 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
     maxWidth: `100%`,
   });
   const Title = styled(Typography)({
-    marginBottom: theme.spacing(3),
-    fontWeight: 'bold',
+    marginBottom: `${theme.spacing(2)}px !important`,
+    fontWeight: 'bold !important',
   }) as typeof Typography;
   const SubTitle = styled(Typography)({
-    marginBottom: theme.spacing(3),
+    marginBottom: `${theme.spacing(2)}px !important`,
   }) as typeof Typography;
 
   // TODO: dirty
