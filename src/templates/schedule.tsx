@@ -4,7 +4,6 @@ import { graphql, PageRendererProps } from 'gatsby';
 import { Container, Paper, Grid } from '@material-ui/core/';
 import EdgesContent from '../entity/EdgesContent';
 import ScheduleContent from '../entity/ScheduleContent';
-import ScheduleLink from '../entity/ScheduleLink';
 import Layout from '../layouts/Layout';
 import Schedule from '../components/Schedule';
 import ScheduleLinkList from '../components/ScheduleLinkList';
@@ -12,7 +11,6 @@ import ScheduleLinkList from '../components/ScheduleLinkList';
 interface Props {
   data: {
     allContentfulSchedule: EdgesContent<ScheduleContent>;
-    allScheduleLink: EdgesContent<ScheduleLink>;
   };
 }
 
@@ -23,7 +21,7 @@ const Page: FC<ClassAttributes<HTMLElement> & PageRendererProps & Props> = ({ lo
         <Paper>
           <Grid container>
             <Grid item xs={12}>
-              <ScheduleLinkList data={data.allScheduleLink} location={location} />
+              <ScheduleLinkList location={location} />
             </Grid>
             {data.allContentfulSchedule.edges.map(({ node }) => (
               <Grid item xs={12} key={node.id}>
@@ -66,15 +64,6 @@ export const pageQuery = graphql`
               src
             }
           }
-        }
-      }
-    }
-    allScheduleLink(sort: { fields: [path], order: ASC }) {
-      edges {
-        node {
-          id
-          path
-          name
         }
       }
     }
