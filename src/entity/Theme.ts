@@ -8,6 +8,7 @@ export const initTheme = createMuiTheme;
 import brown from '@material-ui/core/colors/brown';
 import blue from '@material-ui/core/colors/blue';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import grey from '@material-ui/core/colors/grey';
 import { darken, lighten } from '@material-ui/core/styles/colorManipulator';
 
 const primary = brown[50];
@@ -29,6 +30,9 @@ export const themeInitialState = {
       main: secondary,
       light: lighten(secondary, 0.07),
       contrastText: blueGrey[900],
+    },
+    text: {
+      secondary: grey[500],
     },
   },
   overrides: {

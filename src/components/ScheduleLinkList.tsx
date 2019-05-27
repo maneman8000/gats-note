@@ -16,11 +16,11 @@ const ScheduleLinkList: FC<ClassAttributes<HTMLElement> & Props> = ({ data, loca
   const theme = useContext(StateContext).state.theme;
   const Root = styled('div')({
     margin: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    borderBottom: `dotted 1px ${theme.palette.secondary.light}`,
+    paddingBottom: theme.spacing(1),
+    borderBottom: `dotted 1px ${theme.palette.primary.dark}`,
   });
   const Button = styled(_Button)({
-    margin: theme.spacing(1),
+    margin: `${theme.spacing(1)}px 0`,
   }) as typeof _Button;
   return (
     <Root>

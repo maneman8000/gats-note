@@ -23,14 +23,17 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
   const Root = styled('div')({
     margin: theme.spacing(2),
     paddingBottom: theme.spacing(2),
-    borderBottom: `dotted 1px ${theme.palette.secondary.light}`,
+    borderBottom: `dotted 1px ${theme.palette.primary.dark}`,
   });
   const Img = styled('img')({
     maxWidth: `100%`,
   });
   const Title = styled(Typography)({
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
     fontWeight: 'bold',
+  }) as typeof Typography;
+  const SubTitle = styled(Typography)({
+    marginBottom: theme.spacing(1),
   }) as typeof Typography;
 
   // TODO: dirty
@@ -79,6 +82,9 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
           <Title variant="h6">
             {format(new Date(data.date), 'M/D (dd)', { locale: jaLocale })} {data.title}
           </Title>
+          <SubTitle color="textSecondary" variant="subtitle2">
+            {format(new Date(data.date), 'YYYY M/D', { locale: jaLocale })}
+          </SubTitle>
           {data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}
         </Grid>
       </Grid>
