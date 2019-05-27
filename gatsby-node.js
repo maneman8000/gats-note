@@ -60,7 +60,7 @@ exports.onCreateNode = ({ node, actions, createNodeId, createContentDigest }) =>
     const date = dateFns.startOfMonth(new Date(node.date));
     const linkData = {
       path: `/schedule/${date.getFullYear()}/${date.getMonth() + 1}`,
-      name: `${date.getFullYear()} / ${date.getMonth() + 1}`,
+      name: `${date.getFullYear()}/${date.getMonth() + 1}`,
     };
     if (!scheduleLinks.has(linkData)) {
       scheduleLinks.add(linkData);
