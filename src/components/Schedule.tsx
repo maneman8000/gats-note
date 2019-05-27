@@ -29,11 +29,11 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
     maxWidth: `100%`,
   });
   const Title = styled(Typography)({
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     fontWeight: 'bold',
   }) as typeof Typography;
   const SubTitle = styled(Typography)({
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   }) as typeof Typography;
 
   // TODO: dirty
@@ -83,7 +83,7 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
             {format(new Date(data.date), 'M/D (dd)', { locale: jaLocale })} {data.title}
           </Title>
           <SubTitle color="textSecondary" variant="subtitle2">
-            {format(new Date(data.date), 'YYYY M/D', { locale: jaLocale })}
+            {format(new Date(data.date), 'YYYY/M/D', { locale: jaLocale })}
           </SubTitle>
           {data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}
         </Grid>
