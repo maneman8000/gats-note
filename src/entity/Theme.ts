@@ -43,26 +43,32 @@ export const themeInitialState = {
       },
       h1: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
       h2: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
       h3: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
       h4: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
       h5: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
       h6: {
         fontFamily: baseFont,
+        fontWeight: 'bold',
         color: primaryText,
       },
     },

@@ -7,7 +7,6 @@ import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import jaLocale from 'date-fns/locale/ja';
 import rehypeReact from 'rehype-react';
-import brown from '@material-ui/core/colors/brown';
 
 interface Props {
   data: ScheduleContent;
@@ -30,10 +29,9 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
   });
   const Title = styled(Typography)({
     marginBottom: `${theme.spacing(2)}px !important`,
-    fontWeight: 'bold !important',
   }) as typeof Typography;
   const SubTitle = styled(Typography)({
-    marginBottom: `${theme.spacing(2)}px !important`,
+    marginBottom: `${theme.spacing(3)}px !important`,
   }) as typeof Typography;
 
   // TODO: dirty
@@ -68,24 +66,28 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
 
   return (
     <Root>
-      <Grid container justify="flex-start" spacing={4}>
-        {data.image ? (
-          <Grid item xs={12} sm={12} md={6}>
-            <Link href={data.image.file.url} target="_blank" rel="noopener">
-              <Img src={data.image.fluid.src} />
-            </Link>
-          </Grid>
-        ) : (
-          ''
-        )}
-        <Grid item>
+      <Grid container>
+        <Grid item xs={12}>
           <Title variant="h6">
             {format(new Date(data.date), 'M/D (dd)', { locale: jaLocale })} {data.title}
           </Title>
           <SubTitle color="textSecondary" variant="subtitle2">
             {format(new Date(data.date), 'YYYY/M/D', { locale: jaLocale })}
           </SubTitle>
-          {data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}
+        </Grid>
+        <Grid item xs={12}>
+          <Grid container justify="flex-start" spacing={4}>
+            {data.image ? (
+              <Grid item xs={12} sm={12} md={6}>
+                <Link href={data.image.file.url} target="_blank" rel="noopener">
+                  <Img src={data.image.fluid.src} />
+                </Link>
+              </Grid>
+            ) : (
+              ''
+            )}
+            <Grid item>{data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}</Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Root>
