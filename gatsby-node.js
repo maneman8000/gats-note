@@ -98,6 +98,6 @@ exports.onCreatePage = ({ page, actions }) => {
   if (page.path === '/schedule/') {
     const oldPage = Object.assign({}, page);
     deletePage(oldPage);
-    createPage({ ...page, context: { currentDate: format(dateFns.startOfMonth(dateFns.addMonths(current(), -1))) } });
+    createPage({ ...page, context: { currentDate: format(dateFns.startOfMonth(current(), -1)) } });
   }
 };
