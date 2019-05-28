@@ -48,7 +48,7 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
               .map((v: string) => {
                 return [{ type: 'text', value: v }, { type: 'element', tagName: 'br' }];
               })
-              .reduce((acc, val) => acc.concat(val), []);
+              .reduce((acc: Array<any>, val: any) => acc.concat(val), []);
             newNodes.pop();
             ch.splice(i, 1, ...newNodes);
             i += newNodes.length;
