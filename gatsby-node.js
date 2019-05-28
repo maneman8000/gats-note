@@ -1,6 +1,13 @@
 const path = require(`path`);
 const dateFns = require('date-fns');
+const { convertToTimeZone } = require('date-fns-timezone');
 const format = d => dateFns.format(d, 'YYYY-MM-DD');
+
+const current = (() => {
+  const d = new Date();
+  const tz = process.env.TIME_ZONE || 'UTC';
+  return () => convertToTimeZone(d, { timeZone: tz });
+})();
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -26,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `;
 
   const template = path.resolve(`./src/templates/schedule.tsx`);
-  const currentYear = dateFns.getYear(new Date());
+  const currentYear = dateFns.getYear(current());
   for (let year = currentYear - 1; year <= currentYear + 1; year++) {
     for (let month = 1; month <= 12; month++) {
       const dateFrom = new Date(year, month, 1);
@@ -91,6 +98,6 @@ exports.onCreatePage = ({ page, actions }) => {
   if (page.path === '/schedule/') {
     const oldPage = Object.assign({}, page);
     deletePage(oldPage);
-    createPage({ ...page, context: { currentDate: format(new Date()) } });
+    createPage({ ...page, context: { currentDate: format(current()) } });
   }
 };
