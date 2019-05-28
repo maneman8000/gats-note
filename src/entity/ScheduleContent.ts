@@ -1,3 +1,5 @@
+import { graphql } from 'gatsby';
+
 interface ScheduleContent {
   id: string;
   date: string;
@@ -5,7 +7,6 @@ interface ScheduleContent {
   body?: {
     id: string;
     childMarkdownRemark: {
-      html: string;
       htmlAst: any;
     };
   };
@@ -18,4 +19,27 @@ interface ScheduleContent {
     };
   };
 }
+
 export default ScheduleContent;
+
+export const query = graphql`
+  fragment ScheduleContentFields on ContentfulSchedule {
+    id
+    date
+    title
+    body {
+      id
+      childMarkdownRemark {
+        htmlAst
+      }
+    }
+    image {
+      file {
+        url
+      }
+      fluid(maxWidth: 480) {
+        src
+      }
+    }
+  }
+`;

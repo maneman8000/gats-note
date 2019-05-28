@@ -46,24 +46,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
-          date
-          title
-          body {
-            id
-            childMarkdownRemark {
-              html
-              htmlAst
-            }
-          }
-          image {
-            file {
-              url
-            }
-            fluid(maxWidth: 600) {
-              src
-            }
-          }
+          ...ScheduleContentFields
         }
       }
     }

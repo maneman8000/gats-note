@@ -22,9 +22,7 @@ const ScheduleLinkList: FC<ClassAttributes<HTMLElement> & Props> = ({ location }
       allScheduleLink(sort: { fields: [path], order: ASC }) {
         edges {
           node {
-            id
-            path
-            name
+            ...ScheduleLinkFields
           }
         }
       }

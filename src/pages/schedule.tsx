@@ -42,24 +42,7 @@ export const pageQuery = graphql`
     allContentfulSchedule(limit: 100, sort: { fields: [date], order: ASC }, filter: { date: { gte: $currentDate } }) {
       edges {
         node {
-          id
-          date
-          title
-          body {
-            id
-            childMarkdownRemark {
-              html
-              htmlAst
-            }
-          }
-          image {
-            file {
-              url
-            }
-            fluid(maxWidth: 480) {
-              src
-            }
-          }
+          ...ScheduleContentFields
         }
       }
     }
