@@ -59,7 +59,7 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
         <Toolbar>
           <Left>
             <Hidden mdUp>
-              <MenuIconButton color="inherit" arial-label="Menu" onClick={() => setDrawer(!drawer)}>
+              <MenuIconButton color="primary" arial-label="Menu" onClick={() => setDrawer(!drawer)}>
                 <Menu />
               </MenuIconButton>
             </Hidden>
@@ -71,13 +71,13 @@ const Header: FC<ClassAttributes<HTMLElement> & Props> = ({ pathname }) => {
               </Tabs>
             </Hidden>
           </Left>
-          <SocialIconButton color="inherit" arial-label="Mail">
+          <SocialIconButton color="primary" arial-label="Mail">
             <Mail />
           </SocialIconButton>
-          <SocialIconButton color="inherit" arial-label="Facebook">
+          <SocialIconButton color="primary" arial-label="Facebook">
             <FontAwesomeIcon icon={{ prefix: 'fab', iconName: 'facebook' }} />
           </SocialIconButton>
-          <SocialIconButton color="inherit" arial-label="Twitter">
+          <SocialIconButton color="primary" arial-label="Twitter">
             <FontAwesomeIcon icon={{ prefix: 'fab', iconName: 'twitter' }} />
           </SocialIconButton>
         </Toolbar>

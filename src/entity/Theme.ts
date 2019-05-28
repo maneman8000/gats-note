@@ -77,5 +77,10 @@ export const themeInitialState = {
         color: secondary,
       },
     },
+    MuiIconButton: {
+      colorPrimary: {
+        color: brown[700],
+      },
+    },
   },
 };
