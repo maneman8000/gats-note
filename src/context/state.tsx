@@ -16,7 +16,7 @@ const initialState = {
   theme: initTheme(themeInitialState),
 };
 
-export const context = createContext<Context>({ state: initialState, dispatch: action => null });
+export const context = createContext<Context>({ state: initialState, dispatch: _ => null });
 export const Provider: FC<ClassAttributes<HTMLElement>> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return <context.Provider value={{ state, dispatch }}>{children}</context.Provider>;
