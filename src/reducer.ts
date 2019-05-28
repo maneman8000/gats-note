@@ -13,11 +13,6 @@ export const reducer = (state: State, action: Action) => {
         ...state,
         theme: initTheme({ palette: action.payload }),
       };
-    case 'ADMIN_LOGIN':
-      return {
-        ...state,
-        adminUser: action.payload,
-      };
     default:
       return state;
   }

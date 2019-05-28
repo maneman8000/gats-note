@@ -49,10 +49,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/admin/*`] },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

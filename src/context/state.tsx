@@ -2,11 +2,9 @@ import * as React from 'react';
 import { FC, ClassAttributes, Consumer as C, createContext, useReducer, Dispatch } from 'react';
 import { reducer, Action } from '../reducer';
 import { Theme, initTheme, themeInitialState } from '../entity/Theme';
-import { User } from 'react-netlify-identity';
 
 export type State = {
   theme: Theme;
-  adminUser?: User;
 };
 
 interface Context {
@@ -16,7 +14,6 @@ interface Context {
 
 const initialState = {
   theme: initTheme(themeInitialState),
-  adminUser: undefined,
 };
 
 export const context = createContext<Context>({ state: initialState, dispatch: action => null });

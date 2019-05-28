@@ -3,7 +3,7 @@ import { FC, ClassAttributes } from 'react';
 import { graphql, PageRendererProps } from 'gatsby';
 import { Container, Paper, Grid } from '@material-ui/core/';
 import EdgesContent from '../entity/EdgesContent';
-import ScheduleContent, { queryAll } from '../entity/ScheduleContent';
+import ScheduleContent from '../entity/ScheduleContent';
 import Layout from '../layouts/Layout';
 import Schedule from '../components/Schedule';
 import ScheduleLinkList from '../components/ScheduleLinkList';
