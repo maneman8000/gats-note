@@ -17,6 +17,11 @@ const renderAst = new rehypeReact({
   components: { p: Typography, a: Link },
 }).Compiler;
 
+const Contents = styled(Grid)({
+  width: `100%`,
+  maxWidth: 570,
+}) as typeof Grid;
+
 const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
   const theme = useContext(StateContext).state.theme;
   const Root = styled('div')({
@@ -68,7 +73,7 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
     <Root>
       <Grid container>
         <Grid item xs={12}>
-          <Title variant="h6">
+          <Title variant="h2">
             {format(new Date(data.date), 'M/D (dd)', { locale: jaLocale })} {data.title}
           </Title>
           <SubTitle color="textSecondary" variant="subtitle2">
@@ -86,7 +91,9 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
             ) : (
               ''
             )}
-            <Grid item>{data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}</Grid>
+            <Contents item>
+              {data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}
+            </Contents>
           </Grid>
         </Grid>
       </Grid>
