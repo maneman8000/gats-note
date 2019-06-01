@@ -39,37 +39,55 @@ export const themeInitialState = {
     MuiTypography: {
       body1: {
         fontFamily: baseFont,
-        lineHeight: '1.75',
+        fontSize: 16,
+        lineHeight: 1.75,
+      },
+      body2: {
+        fontFamily: baseFont,
+        fontSize: 14,
+        lineHeight: 1.75,
       },
       h1: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 24,
+        lineHeight: 1.43,
       },
       h2: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 20,
+        lineHeight: 1.7,
       },
       h3: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 20,
+        lineHeight: 1.7,
       },
       h4: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 20,
+        lineHeight: 1.7,
       },
       h5: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 16,
+        lineHeight: 1.75,
       },
       h6: {
         fontFamily: baseFont,
         fontWeight: 'bold',
         color: primaryText,
+        fontSize: 16,
+        lineHeight: 1.75,
       },
     },
     MuiLink: {
