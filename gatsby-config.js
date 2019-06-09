@@ -71,6 +71,7 @@ module.exports = {
               rel: 'nofollow',
             },
           },
+         `gatsby-remark-break`,
         ],
       },
     },

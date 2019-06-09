@@ -1,0 +1,19 @@
+{
+  "name": "gatsby-remark-line-break",
+  "version": "1.0.0",
+  "description": "A sub-plugin for gatsby-transformer-remak to convert new line code to break tag",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "akihiro.nishiya@gmail.com",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "markdown"
+  ],
+  "dependencies": {
+    "remark-breaks": "^1.0.2"
+  }
+}

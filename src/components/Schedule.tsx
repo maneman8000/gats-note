@@ -39,36 +39,6 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
     marginBottom: `${theme.spacing(3)}px !important`,
   }) as typeof Typography;
 
-  // TODO: dirty
-  const br = (hast: any) => {
-    const br_i = (hast: any) => {
-      let ch = hast.children;
-      if (!ch) return;
-      let i = 0;
-      while (ch[i]) {
-        if (ch[i].type === 'text') {
-          const vv = ch[i].value.split('\n');
-          if (vv.length > 1) {
-            let newNodes = vv
-              .map((v: string) => {
-                return [{ type: 'text', value: v }, { type: 'element', tagName: 'br' }];
-              })
-              .reduce((acc: Array<any>, val: any) => acc.concat(val), []);
-            newNodes.pop();
-            ch.splice(i, 1, ...newNodes);
-            i += newNodes.length;
-            continue;
-          }
-        }
-        i += 1;
-      }
-      hast.children.forEach((h: any) => br_i(h));
-    };
-    let newHast = Object.assign({}, hast);
-    br_i(newHast);
-    return newHast;
-  };
-
   return (
     <Root>
       <Grid container>
@@ -91,9 +61,7 @@ const Schedule: FC<ClassAttributes<HTMLElement> & Props> = ({ data }) => {
             ) : (
               ''
             )}
-            <Contents item>
-              {data.body ? renderAst(br(data.body.childMarkdownRemark.htmlAst)) : ''}
-            </Contents>
+            <Contents item>{data.body ? renderAst(data.body.childMarkdownRemark.htmlAst) : ''}</Contents>
           </Grid>
         </Grid>
       </Grid>
